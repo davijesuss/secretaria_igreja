@@ -16,7 +16,7 @@ use App\Http\Controllers\SetoresController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/igreja', [igrejaController::class, 'index'])->name('igreja.home');
+Route::get('/', [igrejaController::class, 'index'])->name('igreja.home');
 Route::get('/presbiteros', [PresbiteroController::class, 'index'])->name('igreja.presbiteros');
 Route::get('/cooperadores', [CooperadoresController::class, 'index'])->name('igreja.cooperadoes');
 Route::get('/setores', [SetoresController::class, 'index'])->name('igreja.setores');
