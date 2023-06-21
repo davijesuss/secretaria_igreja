@@ -27,22 +27,22 @@
             <form>
                 <div class="form-group m-2">
                     <label for="exampleInputEmail1">NOME</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="nome" aria-describedby="emailHelp" placeholder="Enter email">
                 </div>
                 <div class="form-group m-2">
                     <label for="exampleInputEmail1">CPF</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <input type="number" class="form-control" id="exampleInputEmail1" name="cpf" aria-describedby="emailHelp" placeholder="Enter email">
                 </div>
                 <div class="form-group m-2">
                     <label for="exampleFormControlSelect1">CARGO</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
+                    <select name="cargo" class="form-control" id="exampleFormControlSelect1">
                     <option value="Presbitero">Presbitero</option>
                     <option value="Copperador">Cooperador</option>
                     </select>
                 </div>
                 <div class="form-group m-2">
                     <label for="exampleFormControlSelect1">DIZIMISTA</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
+                    <select name="dizimista" class="form-control" id="exampleFormControlSelect1">
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
                     </select>
