@@ -23,12 +23,13 @@
             </div>
         </nav><br>
         <div class="container">
-            <form>
+            <form action="{{ route('igreja.setores-store')}}" method="post">
+             @csrf
                 <div class="row">
                     <div class="col-sm-10">
                         <div class="form-group">
 
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Informe o setor">
+                            <input type="text" class="form-control" name="nome_setor" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Informe o setor">
                         </div>
                     </div>
                     <div class="col-sm-2">

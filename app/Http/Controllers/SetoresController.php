@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Setor;
 
 class SetoresController extends Controller
 {
@@ -29,6 +30,9 @@ class SetoresController extends Controller
     public function store(Request $request)
     {
         //
+        Setor::create($request->all());
+        return redirect()->route('igreja.setores');
+
     }
 
     /**

@@ -20,6 +20,7 @@ Route::get('/', [igrejaController::class, 'index'])->name('igreja.home');
 Route::get('/presbiteros', [PresbiteroController::class, 'index'])->name('igreja.presbiteros');
 Route::get('/cooperadores', [CooperadoresController::class, 'index'])->name('igreja.cooperadoes');
 Route::get('/setores', [SetoresController::class, 'index'])->name('igreja.setores');
+Route::post('/', [SetoresController::class, 'store'])->name('igreja.setores-store');
 
 //Route::get('/', function () {
    // return view('welcome');
