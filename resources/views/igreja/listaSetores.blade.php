@@ -24,7 +24,7 @@
         </nav><br>
         <div class="container">
             <form action="{{ route('igreja.setores-store')}}" method="post">
-             @csrf
+                @csrf
                 <div class="row">
                     <div class="col-sm-10">
                         <div class="form-group">
@@ -41,19 +41,17 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">id</th>
+                        <th scope="col">Nome Setor</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($setores as $setor)
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <th>{{ $setor->id}}</th>
+                        <td>{{ $setor->nome_setor}}</td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

@@ -17,6 +17,7 @@ use App\Http\Controllers\SetoresController;
 |
 */
 Route::get('/', [igrejaController::class, 'index'])->name('igreja.home');
+Route::post('/igreja', [igrejaController::class, 'store'])->name('igreja.home-store');
 Route::get('/presbiteros', [PresbiteroController::class, 'index'])->name('igreja.presbiteros');
 Route::get('/cooperadores', [CooperadoresController::class, 'index'])->name('igreja.cooperadoes');
 Route::get('/setores', [SetoresController::class, 'index'])->name('igreja.setores');

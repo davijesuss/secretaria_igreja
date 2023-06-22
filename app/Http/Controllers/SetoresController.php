@@ -13,7 +13,8 @@ class SetoresController extends Controller
     public function index()
     {
         //
-        return view('igreja.listaSetores');
+        $setores = Setor::all();
+        return view('igreja.listaSetores', ['setores'=> $setores]);
     }
 
     /**
@@ -30,7 +31,7 @@ class SetoresController extends Controller
     public function store(Request $request)
     {
         //
-        Setor::create($request->all());
+       Setor::create($request->all());
         return redirect()->route('igreja.setores');
 
     }
