@@ -14,6 +14,7 @@ class SetoresController extends Controller
     {
         //
         $setores = Setor::all();
+        //dd($setores);
         return view('igreja.listaSetores', ['setores'=> $setores]);
     }
 

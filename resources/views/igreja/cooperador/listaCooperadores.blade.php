@@ -26,19 +26,40 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">id</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Setor</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">Cargo</th>
+                        <th scope="col">Dizimista</th>
+                        <th scope="col">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($cooperadores as $cooperador)
+                    @if($cooperador->cargo == 'Cooperador')
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>{{$cooperador->id}}</td>
+                        <td>{{$cooperador->nome}}</td>
+                        <td>{{$cooperador->setor->nome_setor}}</td>
+                        <td>{{$cooperador->cpf}}</td>
+                        <td>{{$cooperador->cargo}}</td>
+                        <td>{{$cooperador->dizimista}}</td>
+                        <td class="d-flex">
+                            <a href="{{ route('igreja.cooperadoes.edit', ['id' => $cooperador->id]) }}" class="btn btn-primary me-2">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <form action="{{ route('igreja.cooperadoes.destroy',  ['id' => $cooperador->id])}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa-solid fa-trash"></i></a>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
+                   @endif
+                    @endforeach
                 </tbody>
             </table>
         </div>

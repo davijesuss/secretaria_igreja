@@ -22,7 +22,7 @@ return new class extends Migration
 
         //constraint
         $table->foreign('id_setor')->references('id')->on('setores');
-        $table->unique('id_setor');
+       
 
         });
     }

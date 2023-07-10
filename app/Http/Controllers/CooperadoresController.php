@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\membro;
+use App\Models\Setor;
 use Illuminate\Http\Request;
 
 class CooperadoresController extends Controller
@@ -9,10 +11,12 @@ class CooperadoresController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        return view('igreja.listaCooperadores');
+        $cooperadores = membro::all();
+        $setores = Setor::all();
+        return view('igreja.cooperador.listaCooperadores', ['cooperadores' => $cooperadores , 'setores' => $setores , 'Request' => $request]);
     }
 
     /**
@@ -28,7 +32,7 @@ class CooperadoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
     }
 
     /**
@@ -42,9 +46,11 @@ class CooperadoresController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $cooperadores = membro::where('id', $id)->first();
+        $setores = Setor::all();
+        return view('igreja.cooperador.edit', ['cooperador' => $cooperadores, 'setores' => $setores]);
     }
 
     /**
@@ -52,7 +58,16 @@ class CooperadoresController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = [
+            'nome' => $request->nome,
+            'cpf' => $request->cpf,
+            'cargo' =>  $request->cargo,
+            'dizimista' => $request->dizimista,
+            'id_setor' =>  $request->id_setor,
+        ];
+    
+        membro::where('id', $id)->update($data);
+        return redirect()->route('igreja.cooperadoes');
     }
 
     /**
@@ -61,5 +76,7 @@ class CooperadoresController extends Controller
     public function destroy(string $id)
     {
         //
+        membro::where('id', $id)->delete();
+        return redirect()->route('igreja.cooperadoes');
     }
 }

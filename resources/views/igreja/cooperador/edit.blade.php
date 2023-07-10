@@ -24,28 +24,28 @@
             </div>
         </nav>
         <div class="container">
-            <form action="{{ route('igreja.home-store')}}" method="post">
-                @csrf
+            <form action="{{ route('igreja.cooperadoes.update', ['id' => $cooperador->id] )}}" method="post">
+                 @csrf
+                @method('PUT')
                 <div class="form-group m-2">
                     <label for="exampleInputEmail1">NOME</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="nome" aria-describedby="emailHelp" placeholder="nome">
+                    <input type="text" class="form-control" value="{{$cooperador->nome}}" id="exampleInputEmail1" name="nome" aria-describedby="emailHelp" placeholder="nome">
                 </div>
                 <div class="form-group m-2">
                     <label for="exampleInputEmail1">CPF</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" name="cpf" aria-describedby="emailHelp" placeholder="cpf">
+                    <input type="text" class="form-control" value="{{$cooperador->cpf}}" id="exampleInputEmail1" name="cpf" aria-describedby="emailHelp" placeholder="cpf">
                 </div>
                 <div class="form-group m-2">
                     <label for="exampleFormControlSelect1">CARGO</label>
                     <select name="cargo" class="form-control" id="exampleFormControlSelect1">
-                        <option value="Presbitero">Presbitero</option>
-                        <option value="Cooperador">Cooperador</option>
+                        <option value="Cooperador" {{ $cooperador->cargo == 'Cooperador' ? 'selected' : '' }}>Cooperador</option>
+                        <option value="Presbitero" {{ $cooperador->cargo == 'Presbitero' ? 'selected' : '' }}>Presbitero</option>
                     </select>
                 </div>
                 <div class="form-group m-2">
                     <label for="exampleFormControlSelect1">DIZIMISTA</label>
                     <select name="dizimista" class="form-control" id="exampleFormControlSelect1">
-                        <option value="Sim">Sim</option>
-                        <option value="Não">Não</option>
+                        <option value="{{$cooperador->dizimista}}">{{$cooperador->dizimista}}</option>
                     </select>
                 </div>
                 <div class="form-group m-2">
@@ -53,11 +53,13 @@
                     <select name="id_setor" class="form-control" id="exampleFormControlSelect1">
                         <option selected>Selecione o setor</option>
                         @foreach($setores as $setor)
-                        <option value="{{$setor->id}}">{{ $setor->nome_setor }}</option>
+                            <option value="{{$setor->id}}" {{ ($cooperador->setor->id ?? old('id_setor')) == $setor->id ? 'selected' : '' }} >{{ $setor->nome_setor }}</option>
                         @endforeach
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary m-2">ENVIAR</button>
+
+                <input type="submit" class="btn btn-success" name="submit" value="Atualizar" >
+                <a href="{{ route('igreja.cooperadoes')}}" class="btn btn-primary m-2">Voltar</a>
             </form>
         </div>
     </div>

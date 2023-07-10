@@ -10,7 +10,7 @@
             <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ route('igreja.home')}}">Cadastrar</a>
             <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ route('igreja.presbiteros')}}">Presbitero</a>
             <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ route('igreja.cooperadoes')}}">Cooperador</a>
-            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ route('igreja.setores')}}">Setores</a> 
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ route('igreja.setores')}}">Setores</a>
         </div>
     </div>
     <!-- Page content wrapper-->
@@ -26,19 +26,27 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">id</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">Cargo</th>
+                        <th scope="col">Dizimista</th>
+                        <th scope="col">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($presbiteros as $presbitero)
+                   @if($presbitero->cargo == 'Presbitero')
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>{{$presbitero->id}}</td>
+                        <td>{{$presbitero->nome}}</td>
+                        <td>{{$presbitero->cpf}}</td>
+                        <td>{{$presbitero->cargo}}</td>
+                        <td>{{$presbitero->dizimista}}</td>
+                        <td></td>
                     </tr>
+                   @endif
+                    @endforeach
                 </tbody>
             </table>
         </div>

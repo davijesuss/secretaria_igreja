@@ -11,8 +11,9 @@ class igrejaController extends Controller
     //
     public function index()
     {
+        $membro = membro::all();
         $setores = Setor::all();
-        return view('igreja.index', ['setores'=> $setores]);
+        return view('igreja.index', ['setores'=> $setores, 'membo' =>  $membro]);
     }
     public function create()
     {

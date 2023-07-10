@@ -16,7 +16,7 @@
     <!-- Page content wrapper-->
     <div id="page-content-wrapper">
         <!-- Top navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom" style="color: blue;">
             <div class="container-fluid">
                 <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -37,12 +37,12 @@
                     </div>
                 </div>
             </form><br><br>
-
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">id</th>
                         <th scope="col">Nome Setor</th>
+                        <th scope="col">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,6 +50,7 @@
                     <tr>
                         <th>{{ $setor->id}}</th>
                         <td>{{ $setor->nome_setor}}</td>
+                        <td></td>
                     </tr>
                     @endforeach
                 </tbody>

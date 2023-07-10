@@ -16,4 +16,8 @@ class membro extends Model
        'cargo',
        'dizimista'
     ];
+
+    public function setor(){
+        return $this->belongsTo('App\Models\setor', 'id_setor');
+    }
 }

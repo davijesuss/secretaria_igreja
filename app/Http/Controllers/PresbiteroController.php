@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\membro;
 
 class PresbiteroController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        return view('igreja.listaPresbitero');
+        $presbiteros = membro::all();
+        return view('igreja.listaPresbitero', ['presbiteros' =>  $presbiteros, 'request' => $request->all()]);
     }
 
     /**
@@ -37,6 +39,8 @@ class PresbiteroController extends Controller
     public function show()
     {
         //
+       
+        
     }
 
     /**

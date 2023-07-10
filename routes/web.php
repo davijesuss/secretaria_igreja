@@ -18,8 +18,18 @@ use App\Http\Controllers\SetoresController;
 */
 Route::get('/', [igrejaController::class, 'index'])->name('igreja.home');
 Route::post('/igreja', [igrejaController::class, 'store'])->name('igreja.home-store');
+
+
 Route::get('/presbiteros', [PresbiteroController::class, 'index'])->name('igreja.presbiteros');
-Route::get('/cooperadores', [CooperadoresController::class, 'index'])->name('igreja.cooperadoes');
+
+
+   Route::get('/cooperadores', [CooperadoresController::class, 'index'])->name('igreja.cooperadoes');
+   Route::get('/cooperadores/{id}/edit', [CooperadoresController::class, 'edit'])->name('igreja.cooperadoes.edit');
+   Route::put('/cooperadores/{id}', [CooperadoresController::class, 'update'])->name('igreja.cooperadoes.update');
+   Route::delete('/cooperadores/{id}', [CooperadoresController::class, 'destroy'])->name('igreja.cooperadoes.destroy');
+
+
+
 Route::get('/setores', [SetoresController::class, 'index'])->name('igreja.setores');
 Route::post('/', [SetoresController::class, 'store'])->name('igreja.setores-store');
 
