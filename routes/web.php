@@ -21,12 +21,16 @@ Route::post('/igreja', [igrejaController::class, 'store'])->name('igreja.home-st
 
 
 Route::get('/presbiteros', [PresbiteroController::class, 'index'])->name('igreja.presbiteros');
+Route::get('/presbiteros/{id}/edit', [PresbiteroController::class, 'edit'])->name('igreja.presbiteros.edit');
+Route::put('/presbiteros/{id}', [PresbiteroController::class, 'update'])->name('igreja.presbiteros.update');
+Route::delete('/presbiteros/{id}', [PresbiteroController::class, 'destroy'])->name('igreja.presbiteros.destroy');
 
 
-   Route::get('/cooperadores', [CooperadoresController::class, 'index'])->name('igreja.cooperadoes');
-   Route::get('/cooperadores/{id}/edit', [CooperadoresController::class, 'edit'])->name('igreja.cooperadoes.edit');
-   Route::put('/cooperadores/{id}', [CooperadoresController::class, 'update'])->name('igreja.cooperadoes.update');
-   Route::delete('/cooperadores/{id}', [CooperadoresController::class, 'destroy'])->name('igreja.cooperadoes.destroy');
+
+Route::get('/cooperadores', [CooperadoresController::class, 'index'])->name('igreja.cooperadoes');
+Route::get('/cooperadores/{id}/edit', [CooperadoresController::class, 'edit'])->name('igreja.cooperadoes.edit');
+Route::put('/cooperadores/{id}', [CooperadoresController::class, 'update'])->name('igreja.cooperadoes.update');
+Route::delete('/cooperadores/{id}', [CooperadoresController::class, 'destroy'])->name('igreja.cooperadoes.destroy');
 
 
 

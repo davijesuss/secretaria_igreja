@@ -28,6 +28,7 @@
                     <tr>
                         <th scope="col">id</th>
                         <th scope="col">Nome</th>
+                        <th scope="col">Setor</th>
                         <th scope="col">CPF</th>
                         <th scope="col">Cargo</th>
                         <th scope="col">Dizimista</th>
@@ -40,10 +41,22 @@
                     <tr>
                         <td>{{$presbitero->id}}</td>
                         <td>{{$presbitero->nome}}</td>
+                        <td>{{$presbitero->setor->nome_setor}}</td>
                         <td>{{$presbitero->cpf}}</td>
                         <td>{{$presbitero->cargo}}</td>
                         <td>{{$presbitero->dizimista}}</td>
-                        <td></td>
+                        <td class="d-flex">
+                            <a href="{{ route('igreja.presbiteros.edit', ['id' => $presbitero->id]) }}" class="btn btn-primary me-2">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <form action="{{ route('igreja.presbiteros.destroy',  ['id' => $presbitero->id])}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa-solid fa-trash"></i></a>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                    @endif
                     @endforeach

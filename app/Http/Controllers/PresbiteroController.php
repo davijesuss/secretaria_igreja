@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\membro;
+use App\Models\Setor;
 
 class PresbiteroController extends Controller
 {
@@ -14,7 +15,8 @@ class PresbiteroController extends Controller
     {
         //
         $presbiteros = membro::all();
-        return view('igreja.listaPresbitero', ['presbiteros' =>  $presbiteros, 'request' => $request->all()]);
+        $setores = Setor::all();
+        return view('igreja.presbitero.listaPresbitero', ['presbiteros' =>  $presbiteros, 'setores' => $setores, 'request' => $request->all()]);
     }
 
     /**
@@ -46,24 +48,39 @@ class PresbiteroController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit( $id)
     {
         //
+        $presbiteros = membro::where('id', $id)->first();
+        $setores = Setor::all();
+        return view('igreja.presbitero.edit', ['presbiteros' =>  $presbiteros, 'setores' => $setores]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request,string $id)
     {
         //
+        $data = [
+            'nome' => $request->nome,
+            'cpf' => $request->cpf,
+            'cargo' =>  $request->cargo,
+            'dizimista' => $request->dizimista,
+            'id_setor' =>  $request->id_setor,
+        ];
+
+        membro::where('id', $id)->update($data);
+        return redirect()->route('igreja.presbiteros');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy()
+    public function destroy(string $id)
     {
         //
+        membro::where('id', $id)->delete();
+        return redirect()->route('igreja.presbiteros');
     }
 }
