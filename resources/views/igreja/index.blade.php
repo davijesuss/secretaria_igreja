@@ -24,7 +24,7 @@
             </div>
         </nav>
         <div class="container">
-            <form action="{{ route('igreja.home-store')}}" method="post">
+            <form name="formcadastro">
                 @csrf
                 <div class="form-group m-2">
                     <label for="exampleInputEmail1">NOME</label>
@@ -62,4 +62,23 @@
         </div>
     </div>
 </div>
+<script>
+    $(function(){
+
+        $('form[name="formcadastro"]').submit(function(event){
+            event.preventDefault();
+
+            $.ajax({
+                url:"{{ route('igreja.home-store')}}",
+                type: "post",
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function(response){
+                    console.log(response);
+                }
+            });
+
+        });
+    });
+</script>
 @endsection

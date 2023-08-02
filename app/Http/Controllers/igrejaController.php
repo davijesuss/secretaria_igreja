@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\membro;
 use App\Models\Setor;
+use Illuminate\Http\JsonResponse;
 
 class igrejaController extends Controller
 {
@@ -26,8 +27,20 @@ class igrejaController extends Controller
     public function store(Request $request)
     {
         //
-        membro::create($request->all());
-        return redirect()->route('igreja.home');
+        $validatedData = $request->validate([
+            'nome' => 'required|string|max:255',
+            'cpf' => 'required|string|max:14', // Assuming CPF has a length of 14 characters
+            'cargo' => 'required|in:Presbitero,Cooperador',
+            'dizimista' => 'required|in:Sim,Não',
+            'id_setor' => 'required|exists:setores,id', // Assuming 'setores' is the table name for your setors
+        ]);
+
+        try {
+            Membro::create($validatedData);
+            return response()->json(['message' => 'Member created successfully'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'An error occurred while creating the member'], 500);
+        }
     }
 
     /**
