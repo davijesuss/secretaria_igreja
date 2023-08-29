@@ -36,6 +36,9 @@ Route::delete('/cooperadores/{id}', [CooperadoresController::class, 'destroy'])-
 
 Route::get('/setores', [SetoresController::class, 'index'])->name('igreja.setores');
 Route::post('/', [SetoresController::class, 'store'])->name('igreja.setores-store');
+Route::get('/setores/{id}/edit', [SetoresController::class, 'edit'])->name('igreja.setores-edit');
+Route::put('/setores/{id}', [SetoresController::class, 'update'])->name('igreja.setores-update');
+Route::delete('/setores/{id}', [SetoresController::class, 'destroy'])->name('igreja.setores-destroy');
 
 //Route::get('/', function () {
    // return view('welcome');

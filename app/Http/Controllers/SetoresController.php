@@ -14,8 +14,7 @@ class SetoresController extends Controller
     {
         //
         $setores = Setor::all();
-        //dd($setores);
-        return view('igreja.listaSetores', ['setores'=> $setores]);
+        return view('igreja.setor.listaSetores', ['setores'=> $setores]);
     }
 
     /**
@@ -48,17 +47,23 @@ class SetoresController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         //
+       $setores = Setor::where('id', $id)->first();
+      return view('igreja.setor.edit', ['setores'=> $setores]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,  $id)
     {
-        //
+       $data = [
+         'nome_setor' => $request->nome_setor,
+       ];
+        Setor::where('id' , $id)->update($data);
+        return redirect()->route('igreja.setores');
     }
 
     /**
@@ -67,5 +72,7 @@ class SetoresController extends Controller
     public function destroy(string $id)
     {
         //
+        Setor::where('id', $id)->delete();
+        return redirect()->route('igreja.setores');
     }
 }

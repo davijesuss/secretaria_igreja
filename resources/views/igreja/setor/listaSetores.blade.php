@@ -50,7 +50,18 @@
                     <tr>
                         <th>{{ $setor->id}}</th>
                         <td>{{ $setor->nome_setor}}</td>
-                        <td></td>
+                        <td class="d-flex">
+                            <a href="{{ route('igreja.setores-edit', ['id' => $setor->id]) }}" class="btn btn-primary me-2">
+                               <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <form action="{{ route('igreja.setores-destroy', ['id' => $setor->id]) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">
+                                   <i class="fa-solid fa-trash"></i></a>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
